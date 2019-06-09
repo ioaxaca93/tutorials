@@ -8,6 +8,7 @@ import com.ioaxaca.tutorials.entities.Customer;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 /**
@@ -33,5 +34,13 @@ public class CustomerDao {
     @Transactional
     public void save(Customer customer){
         entityManager.persist(customer);
+    }
+
+    @Transactional(readOnly = true)
+    public Customer findByEmail(String email) {
+        return entityManager.unwrap(Session.class)
+                .createQuery("SELECT c FROM Customer c WHERE c.email= :email",Customer.class)
+                .setParameter("email", email)
+                .getSingleResult();
     }
 }

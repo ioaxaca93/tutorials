@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -19,19 +19,16 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/params")
-public class ParamsController {
+public class PathVariablesController {
     
     @Autowired
     private CustomerDao customerDao;
     
-    @GetMapping("/string")
-    public String getString(@RequestParam(name = "id",required = false) Long id, Model model){
-        /*
-            También se puede inyectar HttpServeñetRequest en vez de la anotación @RequestParam y usar el metodo getParam
-        */
-        if(id!=null){
-           model.addAttribute("cliente", customerDao.findById(id));
+    @GetMapping("/customer/{email}")
+    public String getByEmail(@PathVariable(name = "email", required = false) String email,Model model){
+        if(email!=null){
+            model.addAttribute("cliente", customerDao.findByEmail(email));
         }
-        return "params/params";
+        return "params/path";
     }
 }

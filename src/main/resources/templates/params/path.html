@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html xmlns:th="http://www.thymeLeaf.org">
     <head>
-        <title>Oaxs</title>
+        <title>Add Customer</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     </head>
     <body>
         <nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -18,13 +13,13 @@ and open the template in the editor.
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Support</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="customers">Customers</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Oaxs<span class="sr-only"></span></a>
@@ -32,14 +27,16 @@ and open the template in the editor.
                 </ul>
             </div>
         </nav>
-        <br>
-        <div class="card">
-            <div class="card-header">Hola que tal Spring Boot!!</div>
-            <div class="card-body">
-                <h1 class="card-title">Clase 1</h1>
-            </div>
-
+        <div>Params</div>
+        <h1>@PathVariable example</h1>
+        <div th:if="${cliente}">
+            <p>Cliente encontrado!</p>
+            <p th:text="${cliente.name}"></p>
+            <p th:text="${cliente.lastName}"></p>
+            <p th:text="${cliente.email}"></p>
         </div>
-        <p th:text="${autor}"></p>
+        <div th:if="${cliente == null}">
+            <p>Cliente no encontrado!</p>
+        </div>
     </body>
 </html>
