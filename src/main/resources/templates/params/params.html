@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+    <head>
+        <title>Add Customer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">CursoSpring</a>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Support</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Oaxs<span class="sr-only"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div>Params</div>
+        <h1>@RequestParam example</h1>
+        <div th:if="${cliente}">
+            <p>Cliente encontrado!</p>
+            <p th:text="${cliente.name}"></p>
+            <p th:text="${cliente.lastName}"></p>
+            <p th:text="${cliente.email}"></p>
+        </div>
+        <div th:if="${cliente == null}">
+            <p>Cliente no encontrado!</p>
+        </div>
+    </body>
+</html>

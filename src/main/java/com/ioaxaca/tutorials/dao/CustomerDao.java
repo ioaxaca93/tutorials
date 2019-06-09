@@ -25,6 +25,10 @@ public class CustomerDao {
         List resultList = entityManager.createQuery("FROM Customer").getResultList();
         return resultList;
     }
+    @Transactional(readOnly = true)
+    public Customer findById(Long id){
+        return entityManager.find(Customer.class, id);
+    }
     
     @Transactional
     public void save(Customer customer){
