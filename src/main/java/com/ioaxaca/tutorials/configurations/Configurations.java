@@ -27,7 +27,7 @@ public class Configurations {
     @Value("${datasource.driver}")
     private String driver;
     
-    @Bean
+    @Bean//aqui se está registrando el bean DataSource (si hay varias implementaciones del mismo bean se le puede dar un nombre al Bean  tambien se puede usar primary aqio)
     public DataSource dataSourceBean(){
         DriverManagerDataSource dataSource=new DriverManagerDataSource(url, usr, passwd);
         dataSource.setDriverClassName(driver);
